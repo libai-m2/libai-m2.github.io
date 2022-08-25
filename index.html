@@ -1,3 +1,35 @@
-<!-- 标题居中 -->
-<h1 align="center">Hello Guest :)</h1>
-<h2 align="center">Welcome to this place</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home :)</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- 网页中心位置 -->
+    <div class="centerDiv">
+        <!-- 标题居中 -->
+        <h1 align="center">Hello Guest :)</h1>
+        <h2 align="center">Welcome to this place</h2>
+        <!-- 显示倒计时 -->
+        <h3 align="center" id="timer"></h3>
+    </div>
+</body>
+<script>
+    // 倒计时
+    var timer = document.getElementById("timer");
+    var count = 5;
+    var timer_id = setInterval(function () {
+        timer.innerHTML = "Redirecting in " + count + " seconds...";
+        count--;
+        if (count < 0) {
+            clearInterval(timer_id);
+            window.location.href='https://github.com/libai-m2/';
+        }
+    }, 1000);
+</script>
+</html>
