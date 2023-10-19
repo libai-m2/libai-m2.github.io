@@ -1,35 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home :)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        
+        body {
+            background-color: #f3f3f3;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .centerDiv {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 60px;
+            min-width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: shadowChange 1.5s infinite alternate;
+            transition: 0.5s;
+        }
+
+        .card:hover {
+            box-shadow: 0 0px 16px rgba(122, 196, 147, 0.3);
+            animation:none;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #f3f3f3;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin: 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        span {
+            font-size: 18px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        a {
+            color: #0078d7;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 移动端样式 */
+        @media only screen and (max-width: 600px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            h3 {
+                font-size: 14px;
+            }
+
+            .card {
+                min-width: 240px;
+            }
+        }
+
+        @keyframes shadowChange {
+            0% {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            100% {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+        }
+
     </style>
 </head>
+
 <body>
     <!-- 网页中心位置 -->
     <div class="centerDiv">
-        <!-- 标题居中 -->
-        <h1 align="center">Hello Guest :)</h1>
-        <h2 align="center">Welcome to this place</h2>
-        <!-- 显示倒计时 -->
-        <h3 align="center" id="timer"></h3>
+        <!-- 卡片渲染效果 -->
+        <div class="card" onclick="doRedirect()">
+            <img src="https://avatars.githubusercontent.com/u/111962550?v=4" alt="avatar" class="avatar">
+            <!-- 标题居中 -->
+            <h1> Hi Guest! </h1>
+            <h1> 😊 </h1>
+            <h2> Welcome to my space </h2>
+            <!-- 显示倒计时 -->
+            <span> Redirecting in <span id="timer">X</span> sec... </span>
+        </div>
     </div>
 </body>
 <script>
+    function doRedirect(){
+        window.location.href='https://github.com/libai-m2/';
+    }
     // 倒计时
     var timer = document.getElementById("timer");
     var count = 5;
+    timer.innerHTML = count;
     var timer_id = setInterval(function () {
-        timer.innerHTML = "Redirecting in " + count + " seconds...";
-        count--;
-        if (count < 0) {
+        timer.innerHTML = --count;
+        if (count < 1) {
             clearInterval(timer_id);
-            window.location.href='https://github.com/libai-m2/';
+            doRedirect();
         }
     }, 1000);
 </script>
+
 </html>
